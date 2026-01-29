@@ -1,0 +1,31 @@
+# === SECURITY ===
+.env
+.env.local
+.env.*
+
+# === Dependencies ===
+node_modules/
+/node_modules
+
+# === Hardhat & Build ===
+/artifacts
+/cache
+/dist
+/bundle
+
+# === Typechain ===
+/types
+/typechain-types
+
+# === Testing ===
+/coverage
+/coverage.json
+
+# === System Files ===
+.DS_Store
+Thumbs.db
+
+# === IDE Settings ===
+.idea
+.vscode
+*.swp
