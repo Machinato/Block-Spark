@@ -11,7 +11,7 @@ const config: HardhatUserConfig = {
     },
   },
   typechain: {
-    outDir: "type-chain",
+    outDir: "typechain-types",
     target: "ethers-v6"
   },
   mocha: {

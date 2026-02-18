@@ -22,6 +22,7 @@ pnpm-debug.log*
 # === Typechain ===
 /types
 /typechain-types
+/type-chain
 
 # === Testing ===
 /coverage
