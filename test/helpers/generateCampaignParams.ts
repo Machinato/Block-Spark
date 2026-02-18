@@ -36,6 +36,12 @@ export async function generateRandomCampaignParams(): Promise<CampaignParams> {
         // multipleOf: parseFloat(TEST_CONFIG.MAX_CONTRIBUTION_STEP_ETH)
     }).toFixed(2));
 
+    const totalRaised: bigint = TEST_CONFIG.parseEth(faker.number.float({
+        min: parseFloat(TEST_CONFIG.MAX_TOTAL_RAISED),
+        max: parseFloat(TEST_CONFIG.MIN_TOTAL_RAISED),
+        fractionDigits: parseFloat(TEST_CONFIG.MAX_TOTAL_RAISED_DIGITS),
+    }).toFixed(2));
+
     const latestBlock = await ethers.provider.getBlock('latest');
     const currentTimestamp = BigInt(latestBlock?.timestamp || 0);
 
@@ -60,6 +66,7 @@ export async function generateRandomCampaignParams(): Promise<CampaignParams> {
                 🎯 Target Amount:     ${ethers.formatEther(targetAmount)} ETH
                 ⬇️  Min Contribution: ${ethers.formatEther(minContribution)} ETH
                 ⬆️  Max Contribution: ${ethers.formatEther(maxContribution)} ETH
+                👛 Total rised:       ${ethers.formatEther(totalRaised)} 
                 ⏰ Deadline:          ${dateString} (Timestamp: ${endTimestamp})
                 🏷️  Token Name:       ${tokenName}
                 🔤 Token Symbol:      ${tokenSymbol}

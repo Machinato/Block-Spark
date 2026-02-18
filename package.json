@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "check-size": "npx hardhat run scripts/check-size.ts",
-    "fixture-test": "npx hardhat test test/integration/CampaignLifecycle.test.ts"
+    "fixture-test": "npx hardhat test test/integration/CampaignLifecycle.test.ts",
+    "test": "hardhat test",
+    "test:watch": "nodemon --exec 'npx hardhat test' --watch test --ext ts",
+    "test:integration:watch": "nodemon --exec \"npx hardhat test \\\"test/integration/**/*.test.ts\\\"\" --watch test --ext ts",
+    "test:integration": "npx hardhat test --grep integration",
+    "test:unit": "npx hardhat test --grep unit",
+    "test:coverage": "hardhat coverage --solcoverjs ./.solcover.js",
+    "test:coverage:report": "hardhat coverage --solcoverjs ./.solcover.js --report lcov && npx lcov-viewer",
+    "test:grep": "hardhat test --grep",
+    "test:file": "hardhat test"
   },
   "keywords": [],
   "author": "",
@@ -14,11 +22,16 @@
   "devDependencies": {
     "@faker-js/faker": "^10.2.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.10"
+    "hardhat": "^2.22.10",
+    "hardhat-dotenv": "^0.0.1-security",
+    "nodemon": "^3.1.11",
+    "solidity-coverage": "^0.8.17"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.0",
-    "dotenv": "^16.4.5",
-    "faker": "^6.6.6"
+    "dotenv": "^16.6.1",
+    "faker": "^6.6.6",
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^5.0.0"
   }
 }

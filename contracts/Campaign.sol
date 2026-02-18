@@ -33,15 +33,20 @@ contract Campaign {
     error NoContribution(address contributor);
     error NoRewards(address contributor);
     error CampaignPaused();
+    error InvalidTargetAmount();
     error InvalidDeadline(uint currentTimestamp, uint providedTimestamp);
-    error InvalidMaxContribution(uint256 min, uint256 max);
+    error InvalidContributionRange(uint min, uint max);
     error InvalidMaxZero();
+    error InvalidMinZero();
+    error InvalidTargetTooLow();
+    error TransferFailed();
+
 
     event Invested(address indexed contributor, uint amount, uint totalRaised);
-    event FundsClaimed(address recipient, uint amount); 
-    event ContributionRefunded(address recipient, uint amount);
-    event RewardsClaimed(address recipient, uint amount);
-    event BlockSparkTokenCreated(address tokenAddress, string name, string symbol);
+    event FundsClaimed(address indexed recipient, uint amount); 
+    event ContributionRefunded(address indexed recipient, uint amount);
+    event RewardsClaimed(address indexed recipient, uint amount);
+    event BlockSparkTokenCreated(address indexed tokenAddress, string name, string symbol);
     event Paused();
     event Unpaused();
 
@@ -55,9 +60,12 @@ contract Campaign {
         string memory _tokenName,
         string memory _tokenSymbol
     ) {
+        if (_targetAmount == 0) revert InvalidTargetAmount();
         if (_endTimestamp <= block.timestamp) revert InvalidDeadline(block.timestamp, _endTimestamp);
-        if (_maxContribution <= _minContribution) revert InvalidMaxContribution(_minContribution, _maxContribution);
         if (_maxContribution == 0) revert InvalidMaxZero();
+        if (_minContribution == 0) revert InvalidMinZero();
+        if (_maxContribution < _minContribution) revert InvalidContributionRange(_minContribution, _maxContribution);
+        if (_targetAmount < _minContribution) revert InvalidTargetTooLow();
     
         creator = _creator;
         targetAmount = _targetAmount;
@@ -79,14 +87,11 @@ contract Campaign {
     }
 
     function claimFunds() public onlyCreator() inState(CampaignState.Successful) {
-        if (fundsClaimed) {
-            revert AlreadyClaimed(msg.sender);
-        }
-
         fundsClaimed = true;
         uint256 amountToTransfer = address(this).balance;
         (bool success, ) = payable(creator).call{value: amountToTransfer}("");        
-        require(success, "Transfer failed");
+        if (!success) revert TransferFailed();
+        // require(success, "Transfer failed");
         
         emit FundsClaimed(creator, amountToTransfer);
     }
@@ -100,8 +105,9 @@ contract Campaign {
         refundClaimed[msg.sender] = true;
         pendingTokenRewards[msg.sender] = 0;
 
-        (bool success, ) = payable(msg.sender).call{value: amountToTransfer}("");        
-        require(success, "Transfer failed");
+        (bool success, ) = payable(msg.sender).call{value: amountToTransfer}("");    
+        if (!success) revert TransferFailed();    
+        // require(success, "Transfer failed");
         
         emit ContributionRefunded(msg.sender, amountToTransfer);
     }
@@ -109,10 +115,8 @@ contract Campaign {
     function claimTokens() public inStateMultiple(CampaignState.Successful, CampaignState.Finished) {
         uint amountToMint = pendingTokenRewards[msg.sender];
 
-        if (amountToMint == 0){
-            revert NoRewards(msg.sender);
-        }
         if (tokensClaimed[msg.sender] == true) revert AlreadyTokensClaimed(msg.sender);
+        if (amountToMint == 0) revert NoRewards(msg.sender);
         
         tokensClaimed[msg.sender] = true;
         pendingTokenRewards[msg.sender] = 0;

@@ -20,6 +20,7 @@ node_modules/
 # === Testing ===
 /coverage
 /coverage.json
+test-logs/
 
 # === System Files ===
 .DS_Store
