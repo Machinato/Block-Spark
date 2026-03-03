@@ -4,5 +4,5 @@ module.exports = {
   providerOptions: {
     defaultBlockGasLimit: 30000000
   },
-  skipFiles: ['mocks/RejectETH.sol']
+  skipFiles: ['mocks/RejectETH.sol', 'mocks/MockCampaignDeployer.sol']
 };

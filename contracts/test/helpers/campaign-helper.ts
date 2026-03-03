@@ -1,5 +1,5 @@
 import { formatEther, Signer } from "ethers";
-import { Campaign as CampaignContract, Campaign__factory } from "../../typechain-types";
+import { MasterCampaign, MasterCampaign__factory } from "../../typechain-types";
 import winston from 'winston';
 
 export enum CampaignState {
@@ -10,12 +10,12 @@ export enum CampaignState {
 }
 
 export class CampaignHelper {
-    private contract: CampaignContract;
+    private contract: MasterCampaign;
     private campaignAddress: string;
     private logger: winston.Logger;
 
     constructor(campaignAddress: string, signer: Signer, logger: winston.Logger) {
-        this.contract = Campaign__factory.connect(campaignAddress, signer);
+        this.contract = MasterCampaign__factory.connect(campaignAddress, signer);
         this.campaignAddress = campaignAddress
 
         this.logger = logger;

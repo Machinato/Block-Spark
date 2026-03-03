@@ -1,14 +1,13 @@
 import { Signer, ContractTransactionResponse, parseEther, formatEther } from "ethers";
 import { ethers } from "hardhat";
-import { TEST_CONFIG } from "../config";
-import { Campaign as CampaignContract, Campaign__factory } from "../../typechain-types";
+import {  MasterCampaign, MasterCampaign__factory } from "../../typechain-types";
 import { boolean } from "hardhat/internal/core/params/argumentTypes";
 import winston from 'winston';
 import { createLogger } from "../utils/logger";
 
 export class CampaignUser {
     private signer: Signer;
-    private contract: CampaignContract;
+    private contract: MasterCampaign;
     private isCreator: boolean;
     private logger: winston.Logger;
     public name: string;
@@ -17,7 +16,7 @@ export class CampaignUser {
         this.name = name;
         this.signer = signer;
         // this.contract = await ethers.getContractAt("Campaign", campaignAddress, signer) as CampaignContract;
-        this.contract = Campaign__factory.connect(campaignAddress, signer);
+        this.contract = MasterCampaign__factory.connect(campaignAddress, signer);
         this.isCreator = isCreator;
 
         this.logger = logger;
