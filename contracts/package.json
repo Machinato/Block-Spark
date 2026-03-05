@@ -13,7 +13,14 @@
     "test:coverage": "hardhat coverage --solcoverjs ./.solcover.js",
     "test:coverage:report": "hardhat coverage --solcoverjs ./.solcover.js --report lcov && npx lcov-viewer",
     "test:grep": "hardhat test --grep",
-    "test:file": "hardhat test"
+    "test:file": "hardhat test",
+
+
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:base-sepolia": "hardhat run scripts/deploy.ts --network base-sepolia",
+    "verify:base-sepolia": "hardhat verify --network base-sepolia"
   },
   "keywords": [],
   "author": "",
