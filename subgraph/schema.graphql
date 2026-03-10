@@ -1,0 +1,127 @@
+type Platform @entity {
+    id: Bytes!
+
+    totalCampaigns: BigInt!
+    totalActiveCampaigns: BigInt!
+    totalSuccessful: BigInt!
+    totalFailed: BigInt!
+    totalFinished: BigInt!
+
+    totalRaisedETH: BigDecimal!
+    totalRefundedETH: BigDecimal!
+
+    totalInvestors: BigInt!
+    totalCreators: BigInt!
+    totalContributions: BigInt!
+
+    lastUpdatedAt: BigInt!
+}
+
+type Creator @entity {
+    id: Bytes!
+
+    totalCampaigns: BigInt!
+    totalSuccessful: BigInt!
+    totalFailed: BigInt!
+    totalRaisedAcrossCampaigns: BigDecimal!
+
+    firstCampaignAt: BigInt!
+    lastCampaignAt: BigInt!
+
+    campaigns: [Campaign!]! @derivedFrom(field: "creator")
+}
+
+type Campaign @entity {
+    id: Bytes!
+
+    creator: Creator!
+    tokenAddress: Bytes!
+
+    ipfsHash: String!
+    targetAmount: BigDecimal!
+    minContribution: BigDecimal!
+    maxContribution: BigDecimal!
+    endTimestamp: BigInt!
+
+    totalRaised: BigDecimal!
+    investorsCount: BigInt!
+
+    status: String!
+    fundsClaimed: Boolean!
+    paused: Boolean!
+
+    createdAt: BigInt!
+    createdAtBlock: BigInt!
+    createdAtTxHash: Bytes!
+
+    token: Token @derivedFrom(field: "campaign")
+    participations: [Participation!]! @derivedFrom(field: "campaign")
+    contributions: [Contribution!]! @derivedFrom(field: "campaign")
+}
+
+type Token @entity {
+    id: Bytes!
+
+    campaign: Campaign!
+
+    name: String!
+    symbol: String!
+
+    totalMinted: BigDecimal!
+
+    createdAt: BigInt!
+    createdAtBlock: BigInt!
+}
+
+type Investor @entity {
+    id: Bytes!
+
+    totalInvested: BigDecimal!
+    totalRefunded: BigDecimal!
+    campaignsCount: BigInt!
+    totalContributions: BigInt!
+
+    firstInvestmentAt: BigInt!
+    lastInvestmentAt: BigInt!
+
+    participations: [Participation!]! @derivedFrom(field: "investor")
+    contributions: [Contribution!]! @derivedFrom(field: "investor")
+}
+
+type Participation @entity {
+    id: Bytes!
+
+    campaign: Campaign!
+    investor: Investor!
+
+    totalContributed: BigDecimal!
+
+    tokenRewards: BigDecimal!
+
+    refunded: Boolean!
+    tokensClaimed: Boolean!
+
+    contributionCount: BigInt!
+
+    firstInvestmentAt: BigInt!
+    lastInvestmentAt: BigInt!
+
+    contributions: [Contribution!]! @derivedFrom(field: "participation")
+}
+
+type Contribution @entity {
+    id: Bytes!
+
+    participation: Participation!
+
+    campaign: Campaign!
+    investor: Investor!
+
+    amount: BigDecimal!
+
+    tokenRewardsAfter: BigDecimal!
+
+    timestamp: BigInt!
+    blockNumber: BigInt!
+    transactionHash: Bytes!
+}

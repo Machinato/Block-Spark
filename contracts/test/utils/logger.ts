@@ -10,7 +10,7 @@ try {
         fs.mkdirSync(LOG_DIR, { recursive: true });
     }
 } catch (err) {
-    console.error("Не вдалося створити папку логів:", err);
+    console.error("Do not add the root to the login folder:", err);
 }
 
 export function createLogger(moduleName: string): winston.Logger {
@@ -21,13 +21,13 @@ export function createLogger(moduleName: string): winston.Logger {
         if (fs.existsSync(logFilePath)) {
             fs.unlinkSync(logFilePath);
         }
-    } catch (e) {}
+    } catch (e) { }
 
     const fileFormat = winston.format.combine(
         winston.format.timestamp({ format: 'HH:mm:ss' }),
         winston.format.printf(({ timestamp, level, message }) => {
             // Вирізаємо ANSI-коди кольорів
-            const cleanMessage = (message as string).replace(/\u001b\[.*?m/g, ''); 
+            const cleanMessage = (message as string).replace(/\u001b\[.*?m/g, '');
             return `[${timestamp}] ${cleanMessage}`;
         })
     );

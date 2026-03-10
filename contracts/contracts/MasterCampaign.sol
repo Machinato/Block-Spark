@@ -64,7 +64,8 @@ contract MasterCampaign is Initializable {
         address indexed campaignAddress,
         address indexed contributor,
         uint256 amount,
-        uint256 totalRaisedAfter
+        uint256 totalRaisedAfter,
+        uint256 pendingTokenRewardsAfter
     );
 
     event FundsClaimed(
@@ -147,7 +148,13 @@ contract MasterCampaign is Initializable {
         contributions[msg.sender] += msg.value;
         pendingTokenRewards[msg.sender] += calculateTokenAmount(msg.value);
         totalRaised += msg.value;
-        emit Invested(address(this), msg.sender, msg.value, totalRaised);
+        emit Invested(
+            address(this),
+            msg.sender,
+            msg.value,
+            totalRaised,
+            pendingTokenRewards[msg.sender]
+        );
     }
 
     function claimFunds() public onlyCreator inState(CampaignState.Successful) {

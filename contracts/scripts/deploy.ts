@@ -1,14 +1,14 @@
 import { ethers, run, network } from "hardhat";
-import * as fs   from "fs";
+import * as fs from "fs";
 import * as path from "path";
 
 type Deployments = {
-    masterToken?:    string;
+    masterToken?: string;
     masterCampaign?: string;
-    campaignFactory?:        string;
+    campaignFactory?: string;
 };
 
-const DEPLOYMENTS_DIR  = path.join(__dirname, "../deployments");
+const DEPLOYMENTS_DIR = path.join(__dirname, "../deployments");
 const DEPLOYMENTS_FILE = path.join(DEPLOYMENTS_DIR, `${network.name}.json`);
 
 function loadDeployments(): Deployments {
@@ -38,9 +38,10 @@ async function main() {
         requireEnv("ETHERSCAN_API_KEY");
     }
 
-    const [deployer]  = await ethers.getSigners();
-    const balance     = await ethers.provider.getBalance(deployer.address);
+    const [deployer] = await ethers.getSigners();
+    const balance = await ethers.provider.getBalance(deployer.address);
     const deployments = loadDeployments();
+    let currentNonce = await deployer.getNonce("pending");
 
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
     console.log("  BlockSpark — Deploy");
@@ -59,7 +60,7 @@ async function main() {
     } else {
         console.log("\n[1/3] Deploying MasterBlockSparkToken...");
         const MasterToken = await ethers.getContractFactory("MasterBlockSparkToken");
-        const masterToken = await MasterToken.deploy();
+        const masterToken = await MasterToken.deploy({ nonce: currentNonce++ });
         await masterToken.waitForDeployment();
         masterTokenAddress = await masterToken.getAddress();
 
@@ -78,7 +79,7 @@ async function main() {
     } else {
         console.log("\n[2/3] Deploying MasterCampaign...");
         const MasterCampaign = await ethers.getContractFactory("MasterCampaign");
-        const masterCampaign = await MasterCampaign.deploy();
+        const masterCampaign = await MasterCampaign.deploy({ nonce: currentNonce++ });
         await masterCampaign.waitForDeployment();
         masterCampaignAddress = await masterCampaign.getAddress();
 
@@ -97,7 +98,7 @@ async function main() {
     } else {
         console.log("\n[3/3] Deploying CampaignFactory...");
         const Factory = await ethers.getContractFactory("CampaignFactory");
-        const factory = await Factory.deploy(masterCampaignAddress, masterTokenAddress);
+        const factory = await Factory.deploy(masterCampaignAddress, masterTokenAddress, { nonce: currentNonce++ });
         await factory.waitForDeployment();
         factoryAddress = await factory.getAddress();
 
@@ -125,9 +126,9 @@ async function main() {
 
     console.log("\n  🔍 Verifying on Basescan...\n");
 
-    await tryVerify("MasterBlockSparkToken", masterTokenAddress,    []);
-    await tryVerify("MasterCampaign",        masterCampaignAddress, []);
-    await tryVerify("CampaignFactory",       factoryAddress,        [masterCampaignAddress, masterTokenAddress]);
+    await tryVerify("MasterBlockSparkToken", masterTokenAddress, []);
+    await tryVerify("MasterCampaign", masterCampaignAddress, []);
+    await tryVerify("CampaignFactory", factoryAddress, [masterCampaignAddress, masterTokenAddress]);
 
     console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
     console.log("  🎉 Done!");
@@ -136,8 +137,8 @@ async function main() {
 }
 
 async function tryVerify(
-    name:                 string,
-    address:              string,
+    name: string,
+    address: string,
     constructorArguments: unknown[],
 ): Promise<void> {
     try {

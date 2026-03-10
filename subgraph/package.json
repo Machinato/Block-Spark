@@ -1,0 +1,22 @@
+{
+  "name": "blockspark-subgraph",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "copy-abis": "node scripts/copy-abis.js",
+    "prepare": "mustache config/base-sepolia.json subgraph.template.yaml > subgraph.yaml",
+    "codegen": "npm run copy-abis && npm run prepare && graph codegen",
+    "build": "graph build",
+    "auth": "graph auth --studio",
+    "deploy": "graph deploy --studio block-spark"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.80.0",
+    "@graphprotocol/graph-ts": "^0.35.1",
+    "mustache": "^4.2.0"
+  }
+}

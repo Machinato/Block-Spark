@@ -1,0 +1,77 @@
+specVersion: 1.0.0
+
+indexerHints:
+  prune: auto
+
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum
+    name: CampaignFactory
+    network: base-sepolia
+    source:
+      address: "{{factoryAddress}}"
+      abi: CampaignFactory
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Platform
+        - Campaign
+        - Token
+      abis:
+        - name: CampaignFactory
+          file: ./abis/CampaignFactory.json
+      eventHandlers:
+        - event: CampaignCreated(indexed address,indexed address,indexed address,uint256,uint256,uint256,uint256,string,string,string)
+          handler: handleCampaignCreated
+      file: ./src/factory-mappings.ts
+
+templates:
+  - kind: ethereum
+    name: MasterCampaign
+    network: base-sepolia
+    source:
+      abi: MasterCampaign
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Campaign
+        - Investment
+        - Investor
+        - Platform
+        - Token
+      abis:
+        - name: MasterCampaign
+          file: ./abis/MasterCampaign.json
+      eventHandlers:
+        - event: CampaignInitialized(indexed address,indexed address,indexed address,uint256,uint256,uint256,uint256,string)
+          handler: handleCampaignInitialized
+
+        - event: BlockSparkTokenCreated(indexed address,indexed address,string,string,indexed address)
+          handler: handleBlockSparkTokenCreated
+
+        - event: Invested(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleInvested
+
+        - event: ContributionRefunded(indexed address,indexed address,uint256)
+          handler: handleContributionRefunded
+
+        - event: RewardsClaimed(indexed address,indexed address,uint256)
+          handler: handleRewardsClaimed
+
+        - event: FundsClaimed(indexed address,indexed address,uint256)
+          handler: handleFundsClaimed
+
+        - event: CampaignPausedEvent(indexed address)
+          handler: handleCampaignPaused
+
+        - event: CampaignUnpausedEvent(indexed address)
+          handler: handleCampaignUnpaused
+
+      file: ./src/campaign-mappings.ts
