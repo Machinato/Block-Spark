@@ -1,0 +1,135 @@
+{
+    "glyphs": {
+        "B": {
+            "ha": 913,
+            "x_min": 87,
+            "x_max": 863,
+            "o": "m 87 0 l 87 1010 l 490 1010 q 675 977 600 1010 q 787 885 749 944 q 825 751 825 827 q 801 647 825 692 q 737 574 778 602 q 643 533 696 545 l 643 524 q 751 491 701 522 q 832 408 802 461 q 863 280 863 354 q 824 136 863 199 q 707 36 785 73 q 515 0 629 0 l 87 0 m 294 169 l 477 169 q 608 204 566 169 q 650 298 650 239 q 630 373 650 340 q 572 424 610 406 q 481 442 534 442 l 294 442 l 294 169 m 294 587 l 463 587 q 542 603 507 587 q 596 648 576 618 q 616 718 616 677 q 576 808 616 774 q 465 843 537 843 l 294 843 l 294 587 z "
+        },
+        "S": {
+            "ha": 909,
+            "x_min": 56,
+            "x_max": 853,
+            "o": "m 461 -15 q 248 23 338 -15 q 107 135 157 61 q 56 317 58 210 l 257 317 q 286 230 260 266 q 357 177 313 195 q 460 159 402 159 q 557 175 515 159 q 622 220 599 191 q 645 288 645 250 q 625 346 645 322 q 566 387 605 370 q 469 416 527 404 l 359 444 q 154 542 227 475 q 81 720 81 610 q 130 880 81 811 q 265 986 179 948 q 462 1025 351 1025 q 658 986 574 1025 q 789 878 742 947 q 838 718 836 809 l 638 718 q 586 816 633 781 q 460 851 538 851 q 370 836 408 851 q 312 794 332 821 q 292 732 292 767 q 314 672 292 696 q 373 632 335 648 q 457 606 410 616 l 549 583 q 672 544 616 568 q 769 484 728 519 q 831 400 810 448 q 853 290 853 352 q 806 129 853 197 q 672 22 760 60 q 461 -15 585 -15 z "
+        },
+        "a": {
+            "ha": 798,
+            "x_min": 45,
+            "x_max": 715,
+            "o": "m 296 -14 q 168 11 224 -14 q 78 86 111 36 q 45 210 45 136 q 68 315 45 273 q 132 382 92 357 q 223 421 172 408 q 330 440 274 435 q 436 453 396 447 q 494 471 476 458 q 513 507 513 483 l 513 511 q 499 564 513 542 q 458 598 485 586 q 394 610 432 610 q 327 598 355 610 q 280 566 298 586 q 254 521 262 546 l 68 545 q 127 661 83 612 q 240 734 172 709 q 396 760 309 760 q 517 745 460 760 q 619 699 574 730 q 689 620 664 667 q 715 505 715 572 l 715 0 l 522 0 l 522 104 l 515 104 q 467 42 497 69 q 395 1 437 16 q 296 -14 353 -14 m 353 127 q 437 146 401 127 q 494 197 473 165 q 514 269 514 229 l 514 349 q 488 338 505 343 q 449 328 471 332 q 405 321 427 324 q 365 315 383 317 q 300 297 328 309 q 256 266 271 286 q 240 216 240 245 q 255 168 240 187 q 295 138 269 148 q 353 127 320 127 z "
+        },
+        "c": {
+            "ha": 807,
+            "x_min": 52,
+            "x_max": 758,
+            "o": "m 420 -15 q 224 34 307 -15 q 97 169 142 82 q 52 372 52 256 q 97 575 52 488 q 224 711 142 663 q 420 760 307 760 q 546 742 488 760 q 647 690 603 724 q 719 608 691 656 q 757 500 747 560 l 567 473 q 549 526 561 503 q 518 565 536 549 q 476 591 500 582 q 422 600 452 600 q 332 571 368 600 q 277 491 296 543 q 258 372 258 440 q 277 254 258 305 q 332 174 296 203 q 422 145 368 145 q 476 154 452 145 q 518 180 500 163 q 550 221 537 197 q 568 276 562 245 l 758 248 q 721 140 749 188 q 648 57 692 92 q 546 3 604 22 q 420 -15 488 -15 z "
+        },
+        "k": {
+            "ha": 796,
+            "x_min": 83,
+            "x_max": 793,
+            "o": "m 267 218 l 267 461 l 296 461 l 544 749 l 779 749 l 452 373 l 405 373 l 267 218 m 83 0 l 83 1010 l 286 1010 l 286 0 l 83 0 m 555 0 l 328 328 l 463 471 l 793 0 l 555 0 z "
+        },
+        "l": {
+            "ha": 369,
+            "x_min": 83,
+            "x_max": 286,
+            "o": "m 286 1010 l 286 0 l 83 0 l 83 1010 l 286 1010 z "
+        },
+        "o": {
+            "ha": 842,
+            "x_min": 52,
+            "x_max": 790,
+            "o": "m 421 -15 q 225 34 308 -15 q 97 169 142 82 q 52 372 52 256 q 97 575 52 488 q 225 711 142 663 q 421 760 308 760 q 617 711 534 760 q 745 575 700 663 q 790 372 790 488 q 745 169 790 256 q 617 34 700 82 q 421 -15 534 -15 m 421 145 q 510 174 474 145 q 566 255 547 203 q 585 372 585 306 q 566 490 585 439 q 510 570 547 541 q 421 600 474 600 q 332 570 368 600 q 276 490 295 541 q 258 372 258 439 q 276 255 258 306 q 331 174 295 203 q 421 145 368 145 z "
+        },
+        "p": {
+            "ha": 865,
+            "x_min": 83,
+            "x_max": 814,
+            "o": "m 83 -283 l 83 749 l 282 749 l 282 628 l 291 628 q 334 690 307 660 q 403 740 361 720 q 506 760 446 760 q 662 715 592 760 q 772 585 731 671 q 814 374 814 499 q 773 164 814 250 q 663 33 733 78 q 505 -13 593 -13 q 404 6 446 -13 q 335 56 362 26 q 291 118 307 85 l 286 118 l 286 -283 l 83 -283 m 444 150 q 533 178 497 150 q 588 257 569 206 q 606 374 606 307 q 588 491 606 441 q 533 569 569 541 q 444 597 497 597 q 356 569 393 597 q 299 492 319 542 q 280 374 280 442 q 300 256 280 307 q 356 178 319 206 q 444 150 393 150 z "
+        },
+        "r": {
+            "ha": 555,
+            "x_min": 83,
+            "x_max": 531,
+            "o": "m 83 0 l 83 749 l 279 749 l 279 619 l 286 619 q 354 723 307 688 q 467 758 401 758 q 500 756 483 758 q 531 752 518 755 l 531 573 q 493 579 518 577 q 444 582 467 582 q 362 562 399 582 q 306 507 326 543 q 286 422 286 471 l 286 0 l 83 0 z "
+        }
+    },
+    "familyName": "Inter 18pt",
+    "ascender": 1345,
+    "descender": -335,
+    "underlinePosition": -192,
+    "underlineThickness": 131,
+    "boundingBox": {
+        "yMin": -465,
+        "xMin": -1098,
+        "yMax": 1548,
+        "xMax": 3584
+    },
+    "resolution": 1000,
+    "original_font_information": {
+        "format": 0,
+        "copyright": "Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)",
+        "fontFamily": "Inter 18pt",
+        "fontSubfamily": "Bold",
+        "uniqueID": "4.001;RSMS;Inter18pt-Bold",
+        "fullName": "Inter 18pt Bold",
+        "version": "Version 4.001;git-66647c0bb",
+        "postScriptName": "Inter18pt-Bold",
+        "trademark": "Inter UI and Inter is a trademark of rsms.",
+        "manufacturer": "rsms",
+        "designer": "Rasmus Andersson",
+        "manufacturerURL": "https://rsms.me/",
+        "designerURL": "https://rsms.me/",
+        "licence": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org",
+        "licenceURL": "https://openfontlicense.org",
+        "preferredFamily": "Inter 18pt",
+        "preferredSubfamily": "Bold",
+        "unknown1": "Inter",
+        "unknown2": "Optical size",
+        "unknown3": "Weight",
+        "unknown4": "Open digits",
+        "unknown5": "Disambiguation",
+        "unknown6": "Round quotes & commas",
+        "unknown7": "Disambiguation (no slashed zero)",
+        "unknown8": "Circled characters",
+        "unknown9": "Squared characters",
+        "unknown10": "Square punctuation",
+        "unknown11": "Square quotes",
+        "unknown12": "Alternate one",
+        "unknown13": "Open four",
+        "unknown14": "Open six",
+        "unknown15": "Open nine",
+        "unknown16": "Lower-case L with tail",
+        "unknown17": "Simplified u",
+        "unknown18": "Alternate sharp s",
+        "unknown19": "Upper-case i with serif",
+        "unknown20": "Flat-top three",
+        "unknown21": "Capital G with spur",
+        "unknown22": "Single-story a",
+        "unknown23": "Compact f",
+        "unknown24": "Compact t",
+        "unknown25": "Alternate capital sharp S",
+        "unknown26": "Thin",
+        "unknown27": "ExtraLight",
+        "unknown28": "Light",
+        "unknown29": "Regular",
+        "unknown30": "Medium",
+        "unknown31": "SemiBold",
+        "unknown32": "Bold",
+        "unknown33": "ExtraBold",
+        "unknown34": "Black",
+        "unknown35": "Optical Size",
+        "unknown36": "14pt",
+        "unknown37": "16pt",
+        "unknown38": "17pt",
+        "unknown39": "18pt",
+        "unknown40": "20pt",
+        "unknown41": "24pt",
+        "unknown42": "28pt",
+        "unknown43": "Italic",
+        "unknown44": "Roman"
+    },
+    "cssFontWeight": "bold",
+    "cssFontStyle": "normal"
+}
