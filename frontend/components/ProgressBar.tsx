@@ -28,35 +28,50 @@ export function ProgressBar({
   animate = true,
 }: ProgressBarProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true })
   const [hasAnimated, setHasAnimated] = useState(!animate)
-  
+
   const percent = progressPercent(raised, target)
 
   useEffect(() => {
-    if (isInView && animate) {
+    if (!animate) return
+    if (typeof IntersectionObserver === 'undefined') {
       setHasAnimated(true)
+      return
     }
-  }, [isInView, animate])
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0] && entries[0].isIntersecting) {
+          setHasAnimated(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => observer.disconnect()
+  }, [animate])
 
   return (
     <div className={cn("w-full", className)} ref={ref}>
       <div
         className={cn(
-          "w-full bg-[#1e1730] rounded-full overflow-hidden",
+          "w-full bg-secondary rounded-full overflow-hidden",
           heightClasses[height]
         )}
       >
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-fuchsia-500 via-pink-500 to-orange-500"
-          initial={{ width: 0 }}
-          animate={{ width: hasAnimated ? `${percent}%` : 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-prism-from to-prism-to transition-all duration-700 ease-out"
+          style={{ width: hasAnimated ? `${percent}%` : '0%' }}
         />
       </div>
       {showPercent && (
         <div className="flex justify-end mt-1">
-          <span className="text-sm font-medium text-fuchsia-400">
+          <span className="text-sm font-medium text-prism-from">
             {percent.toFixed(0)}%
           </span>
         </div>

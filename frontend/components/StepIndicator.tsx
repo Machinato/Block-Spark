@@ -18,24 +18,24 @@ export function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
   return (
     <div className="flex items-center justify-center w-full mb-8">
       {steps.map((step, index) => (
-        <div key={index} className="flex items-center">
+        <div key={step.title} className="flex items-center">
           {/* Step Circle */}
           <div className="flex flex-col items-center">
             <motion.div
               className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center border-2 transition-colors",
                 index < currentStep
-                  ? "bg-emerald-500 border-emerald-500"
+                  ? "bg-prism-from border-prism-from"
                   : index === currentStep
-                  ? "border-emerald-500 text-emerald-500"
-                  : "border-border text-muted-foreground"
+                    ? "border-prism-from text-prism-from"
+                    : "border-border text-muted-foreground"
               )}
               initial={{ scale: 0.8 }}
               animate={{ scale: index === currentStep ? 1.1 : 1 }}
               transition={{ duration: 0.2 }}
             >
               {index < currentStep ? (
-                <Check className="w-5 h-5 text-black" />
+                <Check className="w-5 h-5 text-background" />
               ) : (
                 <span className="font-semibold">{index + 1}</span>
               )}
@@ -55,7 +55,7 @@ export function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
             <div
               className={cn(
                 "w-16 md:w-24 h-0.5 mx-2",
-                index < currentStep ? "bg-emerald-500" : "bg-border"
+                index < currentStep ? "bg-prism-from" : "bg-border"
               )}
             />
           )}

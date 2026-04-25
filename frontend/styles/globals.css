@@ -7,116 +7,103 @@
    LIGHT THEME — збережена для майбутнього використання
    ============================================================ */
 :root {
-  --background: oklch(0.98 0.002 285);
-  --foreground: oklch(0.12 0.005 285);
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.10 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.12 0.005 285);
+  --card-foreground: oklch(0.10 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.12 0.005 285);
-  --primary: oklch(0.12 0.005 285);
-  --primary-foreground: oklch(0.98 0.002 285);
-  --secondary: oklch(0.94 0.003 285);
-  --secondary-foreground: oklch(0.12 0.005 285);
-  --muted: oklch(0.94 0.003 285);
-  --muted-foreground: oklch(0.50 0.005 285);
-  --accent: oklch(0.94 0.003 285);
-  --accent-foreground: oklch(0.12 0.005 285);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.002 285);
-  --border: oklch(0.88 0.003 285);
-  --input: oklch(0.88 0.003 285);
-  --ring: oklch(0.65 0.28 310);
+  --popover-foreground: oklch(0.10 0 0);
+  --primary: oklch(0.10 0 0);
+  --primary-foreground: oklch(0.97 0 0);
+  --secondary: oklch(0.93 0 0);
+  --secondary-foreground: oklch(0.10 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.93 0 0);
+  --accent-foreground: oklch(0.10 0 0);
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.50 0 0);
   --radius: 0.75rem;
 
-  /* Prism accent — однаковий в обох темах */
-  --accent-from: oklch(0.65 0.28 310);
-  /* violet/fuchsia */
-  --accent-to: oklch(0.70 0.22 45);
-  /* orange */
-  --accent-glow: oklch(0.95 0.01 60);
-  /* майже білий — точка входу променя */
-
   /* Sidebar */
-  --sidebar: oklch(0.96 0.002 285);
-  --sidebar-foreground: oklch(0.12 0.005 285);
-  --sidebar-primary: oklch(0.12 0.005 285);
-  --sidebar-primary-foreground: oklch(0.98 0.002 285);
-  --sidebar-accent: oklch(0.94 0.003 285);
-  --sidebar-accent-foreground: oklch(0.12 0.005 285);
-  --sidebar-border: oklch(0.88 0.003 285);
-  --sidebar-ring: oklch(0.65 0.28 310);
+  --sidebar: oklch(0.95 0 0);
+  --sidebar-foreground: oklch(0.10 0 0);
+  --sidebar-primary: oklch(0.10 0 0);
+  --sidebar-primary-foreground: oklch(0.97 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.10 0 0);
+  --sidebar-border: oklch(0.88 0 0);
+  --sidebar-ring: oklch(0.50 0 0);
 }
 
 /* ============================================================
    DARK THEME — "Dark Prism"
-   Концепція: призма є єдиним джерелом кольору.
-   Всі UI елементи нейтральні, темні, стримані.
+   Концепція: призма є єдиним джерелом кольору на сторінці.
+   Весь UI — чорно-білий, нейтральний, стриманий.
    ============================================================ */
 .dark {
-  /* Фони — теплий майже-чорний, не синій і не сірий */
-  --background: oklch(0.08 0.004 285);
-  /* #0a0a0b — основний фон */
-  --card: oklch(0.11 0.004 285);
-  /* #111113 — картки */
-  --popover: oklch(0.13 0.004 285);
+  /* Фони — чисто темні, без кольорових відтінків */
+  --background: oklch(0.08 0 0);
+  /* майже чорний */
+  --card: oklch(0.12 0 0);
+  /* картки */
+  --popover: oklch(0.14 0 0);
   /* модалки, дропдауни */
 
-  /* Текст — теплий, не чисто білий */
-  --foreground: oklch(0.93 0.008 60);
+  /* Текст — чистий білий з відтінками */
+  --foreground: oklch(0.95 0 0);
   /* основний текст */
-  --card-foreground: oklch(0.93 0.008 60);
-  --popover-foreground: oklch(0.93 0.008 60);
-  --muted-foreground: oklch(0.52 0.008 60);
+  --card-foreground: oklch(0.95 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.50 0 0);
   /* другорядний текст */
 
-  /* Primary — білий текст / темний фон для кнопок */
-  --primary: oklch(0.93 0.008 60);
-  --primary-foreground: oklch(0.08 0.004 285);
+  /* Primary */
+  --primary: oklch(0.95 0 0);
+  /* білий */
+  --primary-foreground: oklch(0.08 0 0);
+  /* чорний */
 
-  /* Secondary — трохи світліший за фон */
-  --secondary: oklch(0.16 0.004 285);
-  --secondary-foreground: oklch(0.93 0.008 60);
+  /* Secondary */
+  --secondary: oklch(0.17 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
 
   /* Muted */
-  --muted: oklch(0.16 0.004 285);
+  --muted: oklch(0.17 0 0);
 
-  /* Accent — використовує prism токени */
-  --accent: oklch(0.16 0.004 285);
-  --accent-foreground: oklch(0.93 0.008 60);
+  /* Accent */
+  --accent: oklch(0.17 0 0);
+  --accent-foreground: oklch(0.95 0 0);
 
   /* Destructive */
   --destructive: oklch(0.45 0.18 25);
-  --destructive-foreground: oklch(0.93 0.008 60);
+  --destructive-foreground: oklch(0.95 0 0);
 
-  /* Бордери — ледь видимі */
-  --border: oklch(0.22 0.004 285 / 0.6);
-  --input: oklch(0.18 0.004 285);
-  --ring: oklch(0.65 0.28 310 / 0.5);
+  /* Бордери — ледь видимі білі лінії */
+  --border: oklch(0.95 0 0 / 0.08);
+  --input: oklch(0.17 0 0);
+  --ring: oklch(0.95 0 0 / 0.3);
 
   --radius: 0.75rem;
 
-  /* ── Prism accent токени ──────────────────────────────────
-     Це головні кольорові токени всього UI.
-     Використовуй їх для: градієнтів, активних станів,
-     hover borders, progress bars, badges, CTA кнопок.
-     Не використовуй fuchsia-*, orange-*, purple-* напряму.
-  ───────────────────────────────────────────────────────── */
-  --accent-from: oklch(0.65 0.28 310);
-  /* violet/fuchsia — верхній промінь */
-  --accent-to: oklch(0.70 0.22 45);
-  /* orange — нижній промінь */
-  --accent-glow: oklch(0.95 0.01 60);
-  /* майже білий — точка входу в призму */
-
   /* Sidebar */
-  --sidebar: oklch(0.11 0.004 285);
-  --sidebar-foreground: oklch(0.93 0.008 60);
-  --sidebar-primary: oklch(0.65 0.28 310);
-  --sidebar-primary-foreground: oklch(0.93 0.008 60);
-  --sidebar-accent: oklch(0.16 0.004 285);
-  --sidebar-accent-foreground: oklch(0.93 0.008 60);
-  --sidebar-border: oklch(0.22 0.004 285 / 0.6);
-  --sidebar-ring: oklch(0.65 0.28 310 / 0.5);
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.95 0 0);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.17 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.95 0 0 / 0.08);
+  --sidebar-ring: oklch(0.95 0 0 / 0.3);
+}
+
+:root {
+  --prism-from: oklch(0.65 0.28 310);
+  --prism-to: oklch(0.70 0.22 45);
+  --prism-glow: oklch(0.98 0 0);
 }
 
 /* ============================================================
@@ -126,7 +113,6 @@
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
 
-  /* Стандартні shadcn токени */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -147,24 +133,28 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Радіуси */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* ── Prism токени для Tailwind класів ─────────────────────
-     Використання:
-       bg-accent-from         → суцільний фіолетовий
-       bg-accent-to           → суцільний оранжевий
-       from-accent-from       → початок градієнту
-       to-accent-to           → кінець градієнту
-       text-accent-glow       → майже білий текст з glow ефектом
-       border-accent-from/30  → прозорий фіолетовий бордер
+  /* ── Prism токени ─────────────────────────────────────────
+     Єдині кольорові токени в системі.
+     Використовувати ТІЛЬКИ для:
+       - ProgressBar fill              → from-prism-from to-prism-to
+       - активний StepIndicator крок  → bg-prism-from
+       - CTA кнопка variant="prism"   → одна на екран
+     
+     ВСЕ інше — чорно-біле через основні токени вище.
+     Класи: from-prism-from, to-prism-to, bg-prism-from,
+            bg-prism-to, text-prism-glow, border-prism-from/30
   ───────────────────────────────────────────────────────── */
-  --color-accent-from: var(--accent-from);
-  --color-accent-to: var(--accent-to);
-  --color-accent-glow: var(--accent-glow);
+  --color-prism-from: oklch(0.65 0.28 310);
+  /* violet */
+  --color-prism-to: oklch(0.70 0.22 45);
+  /* orange */
+  --color-prism-glow: oklch(0.98 0 0);
+  /* near-white */
 
   /* Sidebar */
   --color-sidebar: var(--sidebar);
@@ -187,5 +177,13 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Prism змінні в :root — доступні в runtime для inline styles
+     та для var() в будь-якому CSS контексті               */
+  :root {
+    --prism-from: oklch(0.65 0.28 310);
+    --prism-to: oklch(0.70 0.22 45);
+    --prism-glow: oklch(0.98 0 0);
   }
 }

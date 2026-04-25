@@ -3,218 +3,114 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* BlockSpark — Prism Light Theme */
+/* ============================================================
+   LIGHT THEME — збережена для майбутнього використання
+   ============================================================ */
 :root {
-  --background: #08080f;
-  --foreground: #f0f0ff;
-  --card: #0e0e1a;
-  --card-foreground: #f0f0ff;
-  --popover: #0e0e1a;
-  --popover-foreground: #f0f0ff;
-  --primary: #7dd3fc;
-  --primary-foreground: #08080f;
-  --secondary: #161625;
-  --secondary-foreground: #f0f0ff;
-  --muted: #161625;
-  --muted-foreground: #8888aa;
-  --accent: #7dd3fc;
-  --accent-foreground: #08080f;
-  --destructive: #f43f5e;
-  --destructive-foreground: #f0f0ff;
-  --border: #1e1e30;
-  --input: #1e1e30;
-  --ring: #7dd3fc;
-  --chart-1: #f472b6;
-  --chart-2: #fb923c;
-  --chart-3: #facc15;
-  --chart-4: #4ade80;
-  --chart-5: #7dd3fc;
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.10 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.10 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.10 0 0);
+  --primary: oklch(0.10 0 0);
+  --primary-foreground: oklch(0.97 0 0);
+  --secondary: oklch(0.93 0 0);
+  --secondary-foreground: oklch(0.10 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.93 0 0);
+  --accent-foreground: oklch(0.10 0 0);
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.50 0 0);
   --radius: 0.75rem;
-  --sidebar: #0e0e1a;
-  --sidebar-foreground: #f0f0ff;
-  --sidebar-primary: #7dd3fc;
-  --sidebar-primary-foreground: #08080f;
-  --sidebar-accent: #161625;
-  --sidebar-accent-foreground: #f0f0ff;
-  --sidebar-border: #1e1e30;
-  --sidebar-ring: #7dd3fc;
+
+  /* Sidebar */
+  --sidebar: oklch(0.95 0 0);
+  --sidebar-foreground: oklch(0.10 0 0);
+  --sidebar-primary: oklch(0.10 0 0);
+  --sidebar-primary-foreground: oklch(0.97 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.10 0 0);
+  --sidebar-border: oklch(0.88 0 0);
+  --sidebar-ring: oklch(0.50 0 0);
+
+  --prism-from: oklch(0.95 0 0);
+  --prism-to: oklch(0.70 0 0);
+  --prism-glow: oklch(0.98 0 0);
 }
 
+/* ============================================================
+   DARK THEME — "Dark Prism"
+   Концепція: призма є єдиним джерелом кольору на сторінці.
+   Весь UI — чорно-білий, нейтральний, стриманий.
+   ============================================================ */
 .dark {
-  --background: #08080f;
-  --foreground: #f0f0ff;
-  --card: #0e0e1a;
-  --card-foreground: #f0f0ff;
-  --popover: #0e0e1a;
-  --popover-foreground: #f0f0ff;
-  --primary: #7dd3fc;
-  --primary-foreground: #08080f;
-  --secondary: #161625;
-  --secondary-foreground: #f0f0ff;
-  --muted: #161625;
-  --muted-foreground: #8888aa;
-  --accent: #7dd3fc;
-  --accent-foreground: #08080f;
-  --destructive: #f43f5e;
-  --destructive-foreground: #f0f0ff;
-  --border: #1e1e30;
-  --input: #1e1e30;
-  --ring: #7dd3fc;
-  --chart-1: #f472b6;
-  --chart-2: #fb923c;
-  --chart-3: #facc15;
-  --chart-4: #4ade80;
-  --chart-5: #7dd3fc;
-  --sidebar: #0e0e1a;
-  --sidebar-foreground: #f0f0ff;
-  --sidebar-primary: #7dd3fc;
-  --sidebar-primary-foreground: #08080f;
-  --sidebar-accent: #161625;
-  --sidebar-accent-foreground: #f0f0ff;
-  --sidebar-border: #1e1e30;
-  --sidebar-ring: #7dd3fc;
+  /* Фони — чисто темні, без кольорових відтінків */
+  --background: oklch(0.08 0 0);
+  /* майже чорний */
+  --card: oklch(0.12 0 0);
+  /* картки */
+  --popover: oklch(0.14 0 0);
+  /* модалки, дропдауни */
+
+  /* Текст — чистий білий з відтінками */
+  --foreground: oklch(0.95 0 0);
+  /* основний текст */
+  --card-foreground: oklch(0.95 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  /* другорядний текст */
+
+  /* Primary */
+  --primary: oklch(0.95 0 0);
+  /* білий */
+  --primary-foreground: oklch(0.08 0 0);
+  /* чорний */
+
+  /* Secondary */
+  --secondary: oklch(0.17 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+
+  /* Muted */
+  --muted: oklch(0.17 0 0);
+
+  /* Accent */
+  --accent: oklch(0.17 0 0);
+  --accent-foreground: oklch(0.95 0 0);
+
+  /* Destructive */
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.95 0 0);
+
+  /* Бордери — ледь видимі білі лінії */
+  --border: oklch(0.95 0 0 / 0.08);
+  --input: oklch(0.17 0 0);
+  --ring: oklch(0.95 0 0 / 0.3);
+
+  --radius: 0.75rem;
+
+  /* Sidebar */
+  --sidebar: oklch(0.12 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.95 0 0);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.17 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.95 0 0 / 0.08);
+  --sidebar-ring: oklch(0.95 0 0 / 0.3);
 }
 
-/* Prism beam gradient — як світло що виходить з призми */
-.prism-text {
-  background: linear-gradient(90deg,
-      #ffffff 0%,
-      #bfdbfe 30%,
-      #7dd3fc 60%,
-      #e0f2fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Спектральний градієнт — всі кольори веселки */
-.spectrum-text {
-  background: linear-gradient(90deg,
-      #f472b6 0%,
-      #fb923c 20%,
-      #facc15 40%,
-      #4ade80 60%,
-      #7dd3fc 80%,
-      #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Кнопка — як промінь з призми */
-.prism-button {
-  background: linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 50%, #bfdbfe 100%);
-  color: #08080f;
-  font-weight: 600;
-}
-
-.prism-button:hover {
-  background: linear-gradient(135deg, #f0f9ff 0%, #38bdf8 50%, #7dd3fc 100%);
-}
-
-/* Тонке світіння */
-.prism-glow {
-  box-shadow:
-    0 0 20px rgba(125, 211, 252, 0.08),
-    0 0 40px rgba(125, 211, 252, 0.04);
-}
-
-.prism-glow-strong {
-  box-shadow:
-    0 0 30px rgba(125, 211, 252, 0.2),
-    0 0 60px rgba(125, 211, 252, 0.1),
-    0 0 90px rgba(125, 211, 252, 0.05);
-}
-
-/* Анімації */
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    opacity: 0.4;
-    filter: blur(40px);
-  }
-
-  50% {
-    opacity: 0.7;
-    filter: blur(60px);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes flow {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes swirl {
-
-  0%,
-  100% {
-    transform: rotate(0deg) scale(1);
-  }
-
-  50% {
-    transform: rotate(180deg) scale(1.05);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-flow {
-  animation: flow 15s ease infinite;
-  background-size: 400% 400%;
-}
-
-.animate-swirl {
-  animation: swirl 20s ease-in-out infinite;
-}
-
-/* Currents класи — залишаємо для сумісності */
-.currents-text {
-  background: linear-gradient(90deg, #ffffff 0%, #7dd3fc 50%, #e0f2fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.currents-glow {
-  box-shadow: 0 0 20px rgba(125, 211, 252, 0.08), 0 0 40px rgba(125, 211, 252, 0.04);
-}
-
-.currents-glow-strong {
-  box-shadow: 0 0 30px rgba(125, 211, 252, 0.2), 0 0 60px rgba(125, 211, 252, 0.1);
-}
-
+/* ============================================================
+   THEME MAPPING — підключає CSS змінні до Tailwind v4
+   ============================================================ */
 @theme inline {
-  --font-sans: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -234,15 +130,29 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* ── Prism токени ─────────────────────────────────────────
+     Єдині кольорові токени в системі.
+     Використовувати ТІЛЬКИ для:
+       - ProgressBar fill              → from-prism-from to-prism-to
+       - активний StepIndicator крок  → bg-prism-from
+       - CTA кнопка variant="prism"   → одна на екран
+     
+     ВСЕ інше — чорно-біле через основні токени вище.
+     Класи: from-prism-from, to-prism-to, bg-prism-from,
+            bg-prism-to, text-prism-glow, border-prism-from/30
+  ───────────────────────────────────────────────────────── */
+  --color-prism-from: oklch(0.95 0 0);
+  --color-prism-to: oklch(0.70 0 0);
+  --color-prism-glow: oklch(0.98 0 0);
+  /* near-white */
+
+  /* Sidebar */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -253,6 +163,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -261,4 +174,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Prism змінні в :root — доступні в runtime для inline styles
+     та для var() в будь-якому CSS контексті               */
+  /* :root {
+    --prism-from: oklch(0.65 0.28 310);
+    --prism-to: oklch(0.70 0.22 45);
+    --prism-glow: oklch(0.98 0 0);
+  } */
 }

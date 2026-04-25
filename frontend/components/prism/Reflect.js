@@ -69,7 +69,6 @@ export const Reflect = forwardRef(({ children, start: _start = [0, 0, 0], end: _
             intersect.point.toArray(api.positions, api.number++ * 3)
             if (intersect.object.onRayMove) {
               // Це призма — фіксуємо вихідний напрямок
-              console.log('Призма вражена! vDir буде:', 1, 1, 0)
               vDir.set(1, 1, 0).normalize()
             } else {
               // Це інший об'єкт — звичайне відбиття
