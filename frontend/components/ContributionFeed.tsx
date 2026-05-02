@@ -30,7 +30,7 @@ export function ContributionFeed({
             className="flex items-center justify-between py-3 border-b border-border last:border-0"
           >
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-mono text-sm text-emerald-500">
+              <span className="font-mono text-sm text-prism-from">
                 {shortenAddress(contribution.investor)}
               </span>
               <span className="text-muted-foreground text-sm">contributed</span>

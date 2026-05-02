@@ -9,7 +9,7 @@
   "scripts": {
     "copy-abis": "node scripts/copy-abis.js",
     "prepare": "mustache config/base-sepolia.json subgraph.template.yaml > subgraph.yaml",
-    "codegen": "npm run copy-abis && npm run prepare && graph codegen",
+    "codegen": "pnpm run copy-abis && pnpm run prepare && graph codegen",
     "build": "graph build",
     "auth": "graph auth --studio",
     "deploy": "graph deploy --studio block-spark"

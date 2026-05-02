@@ -6,8 +6,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Format ETH: "37.5" → "37.5 ETH"
-export function formatETH(value: string): string {
-  const num = parseFloat(value)
+export function formatETH(value: string | bigint | number): string {
+  const num = typeof value === 'bigint' ? Number(value) : parseFloat(String(value))
   if (isNaN(num)) return "0 ETH"
   return `${num.toLocaleString(undefined, { maximumFractionDigits: 4 })} ETH`
 }
@@ -37,9 +37,9 @@ export function timeRemaining(endTimestamp: number): string {
 }
 
 // Progress percentage: (raised / target) * 100, capped at 100
-export function progressPercent(raised: string, target: string): number {
-  const raisedNum = parseFloat(raised)
-  const targetNum = parseFloat(target)
+export function progressPercent(raised: string | bigint | number, target: string | bigint | number): number {
+  const raisedNum = typeof raised === 'bigint' ? Number(raised) : parseFloat(String(raised))
+  const targetNum = typeof target === 'bigint' ? Number(target) : parseFloat(String(target))
   if (isNaN(raisedNum) || isNaN(targetNum) || targetNum === 0) return 0
   return Math.min((raisedNum / targetNum) * 100, 100)
 }
@@ -59,8 +59,8 @@ export function progressColorClass(percent: number): string {
 }
 
 // Format token amount: "240.000000000000000000" → "240"
-export function formatTokens(amount: string): string {
-  const num = parseFloat(amount)
+export function formatTokens(amount: string | bigint | number): string {
+  const num = typeof amount === 'bigint' ? Number(amount) : parseFloat(String(amount))
   if (isNaN(num)) return "0"
   return num.toLocaleString(undefined, { maximumFractionDigits: 2 })
 }
@@ -68,13 +68,13 @@ export function formatTokens(amount: string): string {
 // Estimate tokens for ETH amount (mock calculation matching contract):
 // First 50% of goal = 120 tokens/ETH, rest = 100 tokens/ETH
 export function estimateTokens(
-  ethAmount: string,
-  totalRaised: string,
-  targetAmount: string
+  ethAmount: string | bigint | number,
+  totalRaised: string | bigint | number,
+  targetAmount: string | bigint | number
 ): string {
-  const amount = parseFloat(ethAmount)
-  const raised = parseFloat(totalRaised)
-  const target = parseFloat(targetAmount)
+  const amount = typeof ethAmount === 'bigint' ? Number(ethAmount) : parseFloat(String(ethAmount))
+  const raised = typeof totalRaised === 'bigint' ? Number(totalRaised) : parseFloat(String(totalRaised))
+  const target = typeof targetAmount === 'bigint' ? Number(targetAmount) : parseFloat(String(targetAmount))
 
   if (isNaN(amount) || amount <= 0) return "0"
   if (isNaN(raised) || isNaN(target) || target <= 0) return "0"

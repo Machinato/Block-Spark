@@ -13,26 +13,26 @@ interface CampaignGridProps {
 
 function CampaignSkeleton() {
   return (
-    <div className="rounded-xl border border-fuchsia-500/20 bg-[#130f1f] p-6 space-y-4">
+    <div className="rounded-xl border border-border bg-card p-6 space-y-4">
       <div className="flex items-start justify-between">
-        <Skeleton className="h-6 w-3/4 bg-violet-500/20" />
-        <Skeleton className="h-5 w-16 rounded-full bg-violet-500/20" />
+        <Skeleton className="h-6 w-3/4 bg-muted" />
+        <Skeleton className="h-5 w-16 rounded-full bg-muted" />
       </div>
-      <Skeleton className="h-4 w-full bg-violet-500/20" />
-      <Skeleton className="h-4 w-2/3 bg-violet-500/20" />
-      <Skeleton className="h-2 w-full rounded-full bg-violet-500/20" />
+      <Skeleton className="h-4 w-full bg-muted" />
+      <Skeleton className="h-4 w-2/3 bg-muted" />
+      <Skeleton className="h-2 w-full rounded-full bg-muted" />
       <div className="flex items-center justify-between">
-        <Skeleton className="h-4 w-24 bg-violet-500/20" />
-        <Skeleton className="h-4 w-20 bg-violet-500/20" />
+        <Skeleton className="h-4 w-24 bg-muted" />
+        <Skeleton className="h-4 w-20 bg-muted" />
       </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Skeleton className="h-4 w-12 bg-violet-500/20" />
-          <Skeleton className="h-4 w-16 bg-violet-500/20" />
+          <Skeleton className="h-4 w-12 bg-muted" />
+          <Skeleton className="h-4 w-16 bg-muted" />
         </div>
-        <Skeleton className="h-5 w-14 rounded-full bg-violet-500/20" />
+        <Skeleton className="h-5 w-14 rounded-full bg-muted" />
       </div>
-      <Skeleton className="h-10 w-full rounded-md bg-violet-500/20" />
+      <Skeleton className="h-10 w-full rounded-md bg-muted" />
     </div>
   )
 }
@@ -53,13 +53,13 @@ export function CampaignGrid({ campaigns, isLoading = false }: CampaignGridProps
   if (campaigns.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-fuchsia-500/20 to-orange-500/20 flex items-center justify-center mb-4">
-          <Search className="w-10 h-10 text-fuchsia-400" />
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-prism-from/20 to-prism-to/20 flex items-center justify-center mb-4">
+          <Search className="w-10 h-10 text-prism-from" />
         </div>
         <h3 className="text-xl font-semibold text-foreground mb-2">
           {t("noCampaigns")}
         </h3>
-        <p className="text-violet-300/60">
+        <p className="text-muted-foreground">
           {t("noCampaignsDesc")}
         </p>
       </div>

@@ -1,5 +1,5 @@
 {
-  "name": "blockspark",
+  "name": "blockspark-contracts",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,6 @@
     "test:coverage:report": "hardhat coverage --solcoverjs ./.solcover.js --report lcov && npx lcov-viewer",
     "test:grep": "hardhat test --grep",
     "test:file": "hardhat test",
-
-
     "compile": "hardhat compile",
     "node": "hardhat node",
     "deploy:local": "hardhat run scripts/deploy.ts --network localhost",

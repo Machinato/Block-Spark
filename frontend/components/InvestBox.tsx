@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ProgressBar } from "@/components/ProgressBar"
 import { StatusBadge } from "@/components/StatusBadge"
+import { StatCard } from "@/components/StatCard"
 import { formatETH, formatTokens, estimateTokens, progressPercent } from "@/lib/utils"
 import { useLanguage } from "@/lib/language-context"
 import type { Campaign } from "@/lib/types"
@@ -42,10 +43,10 @@ export function InvestBox({ campaign }: InvestBoxProps) {
   }
 
   return (
-    <Card className="bg-[#130f1f] border-fuchsia-500/20 sticky top-24 currents-glow">
+    <Card className="bg-card border-border sticky top-24 prism-glow hover:border-prism-from/30 transition-colors">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold currents-text">{t("invest")}</CardTitle>
+          <CardTitle className="text-lg font-semibold text-foreground">{t("invest")}</CardTitle>
           <StatusBadge status={campaign.status} paused={campaign.paused} />
         </div>
       </CardHeader>
@@ -58,17 +59,19 @@ export function InvestBox({ campaign }: InvestBoxProps) {
             height="lg"
           />
           <div className="flex items-baseline justify-between">
-            <span className="text-2xl font-bold text-fuchsia-400">
+            <span className="text-2xl font-bold text-prism-from">
               {formatETH(campaign.totalRaised)}
             </span>
-            <span className="text-violet-300/60">
+            <span className="text-muted-foreground">
               of {formatETH(campaign.targetAmount)} {t("target")}
             </span>
           </div>
-          <div className="text-4xl font-bold currents-text text-center py-2">
-            {percent.toFixed(0)}%
-          </div>
-          <div className="flex items-center justify-between text-sm text-violet-300/60">
+          <StatCard 
+            label="Funded"
+            value={percent.toFixed(0)}
+            suffix="%"
+          />
+          <div className="flex items-center justify-between text-sm text-muted-foreground">
             <span>{campaign.investorsCount} {t("backers")}</span>
             <span>
               {campaign.status === "Active" 
@@ -79,8 +82,8 @@ export function InvestBox({ campaign }: InvestBoxProps) {
         </div>
 
         {/* Contribution Limits */}
-        <div className="flex items-center justify-between text-sm p-3 bg-[#1e1730] rounded-lg">
-          <div className="flex items-center gap-1.5 text-violet-300/60">
+        <div className="flex items-center justify-between text-sm p-3 bg-muted rounded-lg border border-border">
+          <div className="flex items-center gap-1.5 text-muted-foreground">
             <Info className="w-4 h-4" />
             <span>Limits:</span>
           </div>
@@ -101,16 +104,16 @@ export function InvestBox({ campaign }: InvestBoxProps) {
                 placeholder="0.0"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="bg-[#1e1730] border-fuchsia-500/20 text-lg focus:border-fuchsia-500/50"
+                className="bg-muted border-border text-lg focus:border-prism-from/50 focus:ring-prism-from/30"
                 step="0.01"
-                min={campaign.minContribution}
-                max={campaign.maxContribution}
+                min={Number(campaign.minContribution)}
+                max={Number(campaign.maxContribution)}
               />
               {amount && parseFloat(amount) > 0 && (
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="text-sm text-fuchsia-400"
+                  className="text-sm text-prism-from"
                 >
                   {t("youWillReceive")}: ~{formatTokens(estimatedTokens)} {campaign.token.symbol}
                 </motion.p>
@@ -119,7 +122,7 @@ export function InvestBox({ campaign }: InvestBoxProps) {
 
             {isConnected ? (
               <Button
-                className="w-full bg-gradient-to-r from-fuchsia-500 to-orange-500 hover:from-fuchsia-600 hover:to-orange-600 text-white font-semibold h-12 border-0"
+                className="w-full bg-gradient-to-r from-prism-from to-prism-to text-primary-foreground hover:opacity-90 font-semibold h-12 border-0"
                 onClick={handleInvest}
                 disabled={!amount || parseFloat(amount) <= 0}
               >
@@ -127,7 +130,7 @@ export function InvestBox({ campaign }: InvestBoxProps) {
               </Button>
             ) : (
               <Button
-                className="w-full bg-[#1e1730] hover:bg-fuchsia-500/10 text-violet-300 hover:text-fuchsia-400 font-semibold h-12 border border-fuchsia-500/20"
+                className="w-full bg-muted hover:bg-prism-from/10 text-muted-foreground hover:text-prism-from font-semibold h-12 border border-border"
                 onClick={() => {
                   // TODO: Open RainbowKit modal
                 }}
@@ -140,28 +143,28 @@ export function InvestBox({ campaign }: InvestBoxProps) {
         )}
 
         {/* Token Info */}
-        <div className="space-y-3 pt-4 border-t border-fuchsia-500/20">
+        <div className="space-y-3 pt-4 border-t border-border">
           <h4 className="font-medium text-foreground">{t("tokenInfo")}</h4>
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
-              <span className="text-violet-300/60">{t("tokenName")}</span>
+              <span className="text-muted-foreground">{t("tokenName")}</span>
               <span className="text-foreground">{campaign.token.name}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-violet-300/60">{t("tokenSymbol")}</span>
-              <Badge variant="outline" className="border-orange-500/50 text-orange-400">
+              <span className="text-muted-foreground">{t("tokenSymbol")}</span>
+              <Badge variant="outline" className="border-prism-to/50 text-prism-to">
                 {campaign.token.symbol}
               </Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-violet-300/60">Total Minted</span>
+              <span className="text-muted-foreground">Total Minted</span>
               <span className="text-foreground">{formatTokens(campaign.token.totalMinted)}</span>
             </div>
           </div>
           <Button
             variant="outline"
             size="sm"
-            className="w-full border-fuchsia-500/20 hover:border-fuchsia-500 text-violet-300 hover:text-fuchsia-400"
+            className="w-full border-border hover:border-prism-from text-muted-foreground hover:text-prism-from"
             onClick={() => {
               // TODO: Add token to MetaMask
               toast.success("Token added to MetaMask")

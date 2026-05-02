@@ -29,7 +29,7 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
       whileHover={{ scale: 1.02, y: -5 }}
       className="group"
     >
-      <Card className="bg-[#130f1f] border-fuchsia-500/20 overflow-hidden transition-all duration-300 group-hover:border-fuchsia-500/50 currents-glow">
+      <Card className="bg-card border-border overflow-hidden transition-all duration-300 group-hover:border-prism-from/30 prism-glow">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-semibold text-lg text-foreground line-clamp-1">
@@ -37,7 +37,7 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
             </h3>
             <StatusBadge status={campaign.status} paused={campaign.paused} />
           </div>
-          <p className="text-sm text-violet-300/60 line-clamp-2 mt-1">
+          <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
             {campaign.description}
           </p>
         </CardHeader>
@@ -49,10 +49,10 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
             className="mb-3"
           />
           <div className="flex items-center justify-between text-sm">
-            <span className="text-fuchsia-400 font-medium">
+            <span className="text-prism-from font-medium">
               {formatETH(campaign.totalRaised)}
             </span>
-            <span className="text-violet-300/60">
+            <span className="text-muted-foreground">
               of {formatETH(campaign.targetAmount)}
             </span>
           </div>
@@ -60,7 +60,7 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
         <CardFooter className="flex flex-col gap-3 pt-0">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1.5 text-sm text-violet-300/60">
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Users className="w-4 h-4" />
                 <span>{campaign.investorsCount}</span>
               </div>
@@ -68,7 +68,7 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
             </div>
             <Badge
               variant="outline"
-              className="text-xs border-orange-500/50 text-orange-400"
+              className="text-xs border-prism-to/50 text-prism-to"
             >
               <Coins className="w-3 h-3 mr-1" />
               {campaign.token.symbol}
@@ -77,7 +77,7 @@ export function CampaignCard({ campaign, index = 0 }: CampaignCardProps) {
           <Button
             asChild
             variant="outline"
-            className="w-full border-fuchsia-500/30 text-violet-300 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-colors"
+            className="w-full border-prism-from/30 text-muted-foreground hover:border-prism-from hover:text-prism-from transition-colors"
           >
             <Link href={`/campaigns/${campaign.id}`}>{t("viewCampaign")}</Link>
           </Button>
