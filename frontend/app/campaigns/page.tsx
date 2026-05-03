@@ -33,7 +33,7 @@ export default function CampaignsPage() {
 
   const sortedCampaigns = [...filteredCampaigns].sort((a, b) => {
     switch (sortBy) {
-      case "most-funded": return parseFloat(b.totalRaised) - parseFloat(a.totalRaised)
+      case "most-funded": return Number(b.totalRaised) - Number(a.totalRaised)
       case "ending-soon": return a.endTimestamp - b.endTimestamp
       case "newest": return b.endTimestamp - a.endTimestamp
       default: return 0

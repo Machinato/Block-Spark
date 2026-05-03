@@ -35,6 +35,7 @@ export function Header() {
     { href: "/campaigns", label: t("campaigns") },
     { href: "/create", label: t("create") },
     { href: "/#how-it-works", label: t("howItWorks") },
+    { href: "/profile", label: t("profile") }
   ]
 
   return (
@@ -42,7 +43,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-[#08080f]/90 backdrop-blur-xl border-b border-white/5"
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       )}
     >
@@ -57,11 +58,11 @@ export function Header() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               {/* Іконка — блискавка як символ енергії/spark */}
-              <Zap className="w-5 h-5 md:w-6 md:h-6 text-sky-300 fill-sky-300/30" />
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-prism-from fill-prism-from/30" />
             </motion.div>
             {/* font-sans — той самий Space Grotesk що і скрізь */}
-            <span className="text-xl md:text-2xl font-bold font-sans tracking-tight text-white">
-              Block<span className="text-sky-300">Spark</span>
+            <span className="text-xl md:text-2xl font-bold font-sans tracking-tight text-foreground">
+              Block<span className="text-prism-from">Spark</span>
             </span>
           </Link>
 
@@ -71,11 +72,11 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/60 hover:text-white transition-colors text-sm font-medium relative group"
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium relative group"
               >
                 {link.label}
-                {/* Підкреслення при hover — тонке біле */}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-white/40 group-hover:w-full transition-all duration-300" />
+                {/* Підкреслення при hover */}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-prism-from/40 group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </nav>
@@ -88,14 +89,14 @@ export function Header() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white/50 hover:text-white hover:bg-white/5"
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted"
                 >
                   <Globe className="w-4 h-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="end"
-                className="bg-[#0e0e1a] border-white/10"
+                className="bg-card border-border"
               >
                 {(Object.keys(localeNames) as Locale[]).map((loc) => (
                   <DropdownMenuItem
@@ -103,7 +104,7 @@ export function Header() {
                     onClick={() => setLocale(loc)}
                     className={cn(
                       "cursor-pointer text-sm",
-                      locale === loc ? "text-sky-300" : "text-white/60"
+                      locale === loc ? "text-prism-from" : "text-muted-foreground"
                     )}
                   >
                     {localeNames[loc]}
@@ -112,9 +113,10 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Connect Button — чистий, мінімалістичний */}
+            {/* Connect Button */}
+            {/* TODO: Implement Wagmi useAccount */}
             <Button
-              className="prism-button h-9 px-5 text-sm rounded-full"
+              className="bg-gradient-to-r from-prism-from to-prism-to text-primary-foreground hover:opacity-90 border-0 h-9 px-5 text-sm rounded-full font-semibold"
               onClick={() => { }}
             >
               {isConnected ? t("connected") : t("connectWallet")}
@@ -127,7 +129,7 @@ export function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="text-white/60"
+                className="text-muted-foreground hover:text-foreground"
                 aria-label="Toggle menu"
               >
                 <Menu className="w-5 h-5" />
@@ -135,7 +137,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[280px] bg-[#08080f] border-white/10"
+              className="w-[280px] bg-background border-border"
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col gap-8 mt-8">
@@ -144,7 +146,7 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="text-lg text-white/60 hover:text-white transition-colors"
+                      className="text-lg text-muted-foreground hover:text-foreground transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       {link.label}
@@ -159,10 +161,10 @@ export function Header() {
                       variant="outline"
                       size="sm"
                       className={cn(
-                        "flex-1 border-white/10 text-sm",
+                        "flex-1 border-border text-sm",
                         locale === loc
-                          ? "bg-sky-300/10 text-sky-300 border-sky-300/30"
-                          : "text-white/50"
+                          ? "bg-prism-from/10 text-prism-from border-prism-from/30"
+                          : "text-muted-foreground"
                       )}
                       onClick={() => setLocale(loc)}
                     >
@@ -171,8 +173,9 @@ export function Header() {
                   ))}
                 </div>
 
+                {/* TODO: Implement Wagmi useAccount */}
                 <Button
-                  className="prism-button w-full rounded-full"
+                  className="bg-gradient-to-r from-prism-from to-prism-to text-primary-foreground hover:opacity-90 border-0 w-full rounded-full font-semibold"
                   onClick={() => setIsOpen(false)}
                 >
                   {t("connectWallet")}

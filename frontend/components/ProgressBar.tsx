@@ -5,8 +5,8 @@ import { motion, useInView } from "framer-motion"
 import { cn, progressPercent } from "@/lib/utils"
 
 interface ProgressBarProps {
-  raised: string
-  target: string
+  raised: string | bigint | number
+  target: string | bigint | number
   className?: string
   height?: "sm" | "md" | "lg"
   showPercent?: boolean

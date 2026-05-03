@@ -10,12 +10,14 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { StatusBadge } from "@/components/StatusBadge"
 import { InvestBox } from "@/components/InvestBox"
 import { ContributionFeed } from "@/components/ContributionFeed"
+import { ProgressBar } from "@/components/ProgressBar"
+import { StatCard } from "@/components/StatCard"
 import {
   MOCK_CAMPAIGNS,
   MOCK_CONTRIBUTIONS,
   MOCK_CAMPAIGN_FULL_DESCRIPTION,
 } from "@/lib/mock-data"
-import { formatTokens } from "@/lib/utils"
+import { formatTokens, formatETH } from "@/lib/utils"
 import { toast } from "sonner"
 
 interface CampaignPageProps {
@@ -57,8 +59,10 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
     })
   }
 
+  const daysLeft = Math.max(0, Math.ceil((campaign.endTimestamp * 1000 - Date.now()) / (1000 * 60 * 60 * 24)))
+
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-24 pb-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Back Button */}
         <motion.div
@@ -80,14 +84,15 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column - Campaign Details */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Header */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Header & Description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
+              className="space-y-6"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <h1 className="text-3xl md:text-4xl font-bold text-foreground">
                   {campaign.name}
                 </h1>
@@ -98,6 +103,22 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
               </p>
             </motion.div>
 
+            {/* Stats & Progress */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="space-y-6"
+            >
+              <ProgressBar raised={campaign.totalRaised} target={campaign.targetAmount} />
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <StatCard label="Raised" value={parseFloat(formatETH(campaign.totalRaised))} suffix=" ETH" decimals={2} />
+                <StatCard label="Target" value={parseFloat(formatETH(campaign.targetAmount))} suffix=" ETH" decimals={2} />
+                <StatCard label="Investors" value={campaign.investorsCount} />
+                <StatCard label="Days Left" value={daysLeft} />
+              </div>
+            </motion.div>
+
             {/* About Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -106,7 +127,7 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
             >
               <Card className="bg-card border-border">
                 <CardHeader>
-                  <CardTitle className="text-xl font-semibold">
+                  <CardTitle className="text-xl font-semibold text-foreground">
                     About this Campaign
                   </CardTitle>
                 </CardHeader>
@@ -192,7 +213,7 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
               >
                 <Card className="bg-card border-border">
                   <CardHeader>
-                    <CardTitle className="text-lg font-semibold">
+                    <CardTitle className="text-lg font-semibold text-foreground">
                       Creator Actions
                     </CardTitle>
                   </CardHeader>
@@ -207,7 +228,7 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
                     )}
                     <Button
                       variant="outline"
-                      className="border-border"
+                      className="border-border text-foreground hover:bg-muted"
                       onClick={() => {
                         // TODO: Replace with useWriteContract for pause/unpause
                         toast.info(
@@ -242,6 +263,7 @@ export default function CampaignDetailPage({ params }: CampaignPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="lg:sticky lg:top-24 h-fit"
           >
             <InvestBox campaign={campaign} />
           </motion.div>

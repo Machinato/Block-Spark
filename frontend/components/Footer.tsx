@@ -8,33 +8,33 @@ export function Footer() {
   const { t } = useLanguage()
   
   return (
-    <footer className="border-t border-fuchsia-500/20 bg-[#0d0a14] relative overflow-hidden">
+    <footer className="border-t border-border bg-background relative overflow-hidden">
       {/* Subtle gradient orb */}
-      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-t from-fuchsia-500/10 to-transparent blur-3xl" />
+      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-t from-prism-from/10 to-transparent blur-3xl" />
       
       <div className="container mx-auto px-4 py-12 relative">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <Sparkles className="w-5 h-5 text-fuchsia-400" />
-            <span className="text-lg font-bold currents-text">BlockSpark</span>
+            <Sparkles className="w-5 h-5 text-prism-from" />
+            <span className="text-lg font-bold text-foreground">BlockSpark</span>
           </Link>
 
           {/* Links */}
-          <nav className="flex items-center gap-6 text-sm text-violet-300">
-            <Link href="/campaigns" className="hover:text-fuchsia-400 transition-colors">
+          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+            <Link href="/campaigns" className="hover:text-prism-from transition-colors">
               {t("campaigns")}
             </Link>
-            <Link href="/create" className="hover:text-fuchsia-400 transition-colors">
+            <Link href="/create" className="hover:text-prism-from transition-colors">
               {t("create")}
             </Link>
-            <Link href="/profile" className="hover:text-fuchsia-400 transition-colors">
+            <Link href="/profile" className="hover:text-prism-from transition-colors">
               {t("profile")}
             </Link>
           </nav>
 
           {/* Copyright */}
-          <p className="text-sm text-violet-400/60">
+          <p className="text-sm text-muted-foreground">
             {t("builtOn")}
           </p>
         </div>

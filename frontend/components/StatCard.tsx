@@ -5,7 +5,7 @@ import { motion, useInView, useSpring, useTransform, useMotionValue } from "fram
 
 interface StatCardProps {
     label: string
-    value: string | bigint
+    value: string | bigint | number
     suffix?: string
     prefix?: string
     decimals?: number
